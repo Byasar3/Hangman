@@ -33,4 +33,5 @@ public class Word {
     }
 
     // turn word into underscores - here? or in Hangman class?
+
 }
