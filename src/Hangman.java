@@ -27,13 +27,10 @@ public class Hangman {
 
     // methods
     public char[] turnWordIntoUnderscores(String wordToGuess) {
-        // Create a StringBuilder to build the underscores with spaces
-        StringBuilder underscoredWord = new StringBuilder();
-        for (int i = 0; i < wordToGuess.length(); i++) {
-            underscoredWord.append("_ ");
-        }
-        // Convert the StringBuilder to a char array
-        return underscoredWord.toString().trim().toCharArray();
+        // repeat "_ " as many times as the length of wordToGuess
+        // trim any white space before or after
+        // convert to character array
+        return "_ ".repeat(wordToGuess.length()).trim().toCharArray();
     }
 
     public boolean isWordGuessed() {
@@ -51,16 +48,16 @@ public class Hangman {
         if (!lettersGuessed.contains(guessedLetter)) {
             lettersGuessed.add(guessedLetter);
         } else {
-            System.out.println("You already guessed the letter " +  "'" + guessedLetter + "'");
+            System.out.println("You already guessed the letter " + "'" + guessedLetter + "'");
             isCorrectGuess = true;
         }
 
-        // check if letter in word, if is replace _ with letter
-        for (int i = 0; i < wordToGuess.length(); i++){
-            if (wordToGuess.charAt(i) == guessedLetter){
-                if ( i == 0 ){
+        // check if letter in word, if it is, replace '_' with letter
+        for (int i = 0; i < wordToGuess.length(); i++) {
+            if (wordToGuess.charAt(i) == guessedLetter) {
+                if (i == 0) {
                     wordToGuessUnderscore[i] = guessedLetter;
-                } else if ( i == 1 ){
+                } else if (i == 1) {
                     wordToGuessUnderscore[i + 1] = guessedLetter;
                 } else {
                     wordToGuessUnderscore[i * 2] = guessedLetter;
@@ -91,13 +88,13 @@ public class Hangman {
         if (lives == 0) {
             resultsDisplay.displayGameOver();
         }
-        if (isWordGuessed()){
+        if (isWordGuessed()) {
             resultsDisplay.displayWin(wordToGuessUnderscore);
         }
     }
 
     public static void main(String[] args) {
-        // create an instance of hangman and run playgame method on it
+        // create an instance of hangman and run playGame() on it
         Hangman game = new Hangman();
         game.playGame();
     }

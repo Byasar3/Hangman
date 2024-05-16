@@ -13,8 +13,8 @@ public class UserInteraction {
             String input = newScannerObject.nextLine();
             if (!input.isEmpty()) {
                 firstChar = input.charAt(0);
-                if (Character.isLetter(firstChar)){
-                    System.out.println("\nYou guessed letter: " + firstChar );
+                if (Character.isLetter(firstChar)) {
+                    System.out.println("\nYou guessed letter: " + firstChar);
                     isValidInput = true;
                 } else {
                     System.out.println("\nInvalid input. Please enter a letter");

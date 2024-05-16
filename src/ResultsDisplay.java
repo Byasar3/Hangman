@@ -18,21 +18,19 @@ public class ResultsDisplay {
         newScannerObject.nextLine();
     }
 
-
     // get the randomised word and display it
-    public void displayWord(char[] wordToGuessUnderscore){
+    public void displayWord(char[] wordToGuessUnderscore) {
         System.out.println(wordToGuessUnderscore);
         System.out.println("\n");
     }
 
-    public void displayListOfGuessedLetters(ArrayList<Character> lettersGuessed){
+    public void displayListOfGuessedLetters(ArrayList<Character> lettersGuessed) {
         StringBuilder guessedLettersAsString = new StringBuilder();
-        for (int i = 0; i < lettersGuessed.size(); i++){
+        for (int i = 0; i < lettersGuessed.size(); i++) {
             guessedLettersAsString.append(lettersGuessed.get(i));
-            if ( i < lettersGuessed.size() - 1 ){
+            if (i < lettersGuessed.size() - 1) {
                 guessedLettersAsString.append(", ");
             }
-
         }
         System.out.println("You've guessed these letters so far : " + guessedLettersAsString + "\n");
     }
@@ -43,7 +41,7 @@ public class ResultsDisplay {
         System.out.println("---------------------------------------------------\n");
     }
 
-    public void displayWin(char[] wordToGuessUnderscore){
+    public void displayWin(char[] wordToGuessUnderscore) {
         System.out.println("\n");
         System.out.println(wordToGuessUnderscore);
         System.out.println("\nCongratulations, you successfully guessed the word!");
@@ -51,7 +49,7 @@ public class ResultsDisplay {
         // create some functionality to restart game
     }
 
-    public void displayGameOver(){
+    public void displayGameOver() {
         System.out.println("\nOh no! You've run out of lives! Better luck next time :(");
         System.out.println("\nPress 'P' to play again");
         // create some functionality to restart game
