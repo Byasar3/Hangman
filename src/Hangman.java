@@ -46,11 +46,31 @@ public class Hangman {
     }
 
     public void handleGuess(char guessedLetter) {
+        boolean isCorrectGuess = false;
         // check if letter already been guessed
         if (!lettersGuessed.contains(guessedLetter)) {
             lettersGuessed.add(guessedLetter);
         } else {
-            System.out.println("You already guessed " + guessedLetter + " letter");
+            System.out.println("You already guessed the letter " +  "'" + guessedLetter + "'");
+            isCorrectGuess = true;
+        }
+
+        // check if letter in word, if is replace _ with letter
+        for (int i = 0; i < wordToGuess.length(); i++){
+            if (wordToGuess.charAt(i) == guessedLetter){
+                if ( i == 0 ){
+                    wordToGuessUnderscore[i] = guessedLetter;
+                } else if ( i == 1 ){
+                    wordToGuessUnderscore[i + 1] = guessedLetter;
+                } else {
+                    wordToGuessUnderscore[i * 2] = guessedLetter;
+                }
+                isCorrectGuess = true;
+            }
+        }
+
+        if (!isCorrectGuess) {
+            --lives;
         }
 
     }
