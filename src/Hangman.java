@@ -83,7 +83,9 @@ public class Hangman {
         resultsDisplay.displayGameStart();
         while (lives > 0 && !isWordGuessed()) {
             resultsDisplay.displayWord(wordToGuessUnderscore);
-            resultsDisplay.displayListOfGuessedLetters(lettersGuessed);
+            if (!lettersGuessed.isEmpty()) {
+                resultsDisplay.displayListOfGuessedLetters(lettersGuessed);
+            }
             resultsDisplay.displayLives(lives);
             Scanner newScannerObject = new Scanner(System.in);
             char guessedLetter = userInteraction.getUserGuess(newScannerObject);
