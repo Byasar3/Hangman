@@ -14,15 +14,15 @@ public class UserInteraction {
             if (!input.isEmpty()) {
                 firstChar = input.charAt(0);
                 if (Character.isLetter(firstChar)){
-                    System.out.println("You guessed letter: " + firstChar);
+                    System.out.println("\nYou guessed letter: " + firstChar );
                     isValidInput = true;
                 } else {
-                    System.out.println("Invalid input. Please enter a letter");
+                    System.out.println("\nInvalid input. Please enter a letter");
                     // reset firstChar to null
                     firstChar = '\0';
                 }
             } else {
-                System.out.println("No character entered.");
+                System.out.println("\nNo character entered.");
             }
         }
         return Character.toLowerCase(firstChar);

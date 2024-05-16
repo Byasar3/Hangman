@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class ResultsDisplay {
@@ -12,10 +13,11 @@ public class ResultsDisplay {
 
     // maybe include rules here = not allowed to guess word, only allowed to guess char
     public void displayRules() {
-        System.out.println("   RULES:  ");
+        System.out.println("                 WELCOME TO TERMINAL HANGMAN!\n");
+        System.out.println("   RULES:\n");
         System.out.println("1. You can only guess one letter at a time, not a word.");
         System.out.println("2. Each wrong letter guess is one life lost.");
-        System.out.println("3. The game will end when you're out of lives or the word is guessed.");
+        System.out.println("3. The game will end when you're out of lives or the word is guessed.\n");
     }
 
     // get the randomised word and display it
@@ -23,8 +25,13 @@ public class ResultsDisplay {
         System.out.println(wordToGuessUnderscore);
     }
 
+    public void displayListOfGuessedLetters(ArrayList<Character> lettersGuessed){
+
+        System.out.println("\nYou've guessed these letters so far : " + lettersGuessed + "\n");
+    }
+
     // display lives left/hanging man
     public void displayLives(int lives) {
-        System.out.println("You have " + lives + " lives left.");
+        System.out.println("You have " + lives + " lives left.\n");
     }
 }
