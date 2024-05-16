@@ -68,9 +68,12 @@ public class Hangman {
 
         if (!isCorrectGuess) {
             --lives;
-            System.out.println("Sorry! Incorrect guess, try again.");
+            if (lives > 0) {
+                System.out.println("Sorry! Incorrect guess, try again.");
+            } else {
+                System.out.println("You used your final life...");
+            }
         }
-
     }
 
     public void playGame() {

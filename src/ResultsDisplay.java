@@ -48,6 +48,120 @@ public class ResultsDisplay {
     // display lives left/hanging man
     public void displayLives(int lives) {
         System.out.println("You have " + lives + " lives left.");
+        switch (lives){
+            case 9:
+                System.out.println(
+                                "       \n" +
+                                "       \n" +
+                                "       \n" +
+                                "       \n" +
+                                "       \n" +
+                                "       \n" +
+                                "========="
+                );
+                break;
+            case 8:
+                System.out.println(
+                                "      +\n" +
+                                "      |\n" +
+                                "      |\n" +
+                                "      |\n" +
+                                "      |\n" +
+                                "      |\n" +
+                                "========="
+                );
+                break;
+
+            case 7:
+                System.out.println(
+                                "  +---+\n" +
+                                "      |\n" +
+                                "      |\n" +
+                                "      |\n" +
+                                "      |\n" +
+                                "      |\n" +
+                                "========="
+                );
+                break;
+            case 6:
+                System.out.println(
+                                "  +---+\n" +
+                                "  |   |\n" +
+                                "      |\n" +
+                                "      |\n" +
+                                "      |\n" +
+                                "      |\n" +
+                                "========="
+                );
+                break;
+            case 5:
+                System.out.println(
+                                "  +---+\n" +
+                                "  |   |\n" +
+                                "  O   |\n" +
+                                "      |\n" +
+                                "      |\n" +
+                                "      |\n" +
+                                "========="
+                );
+                break;
+            case 4:
+                System.out.println(
+                                "  +---+\n" +
+                                "  |   |\n" +
+                                "  O   |\n" +
+                                "  |   |\n" +
+                                "      |\n" +
+                                "      |\n" +
+                                "========="
+                );
+                break;
+            case 3:
+                System.out.println(
+                                "  +---+\n" +
+                                "  |   |\n" +
+                                "  O   |\n" +
+                                " /|   |\n" +
+                                "      |\n" +
+                                "      |\n" +
+                                "========="
+                );
+                break;
+            case 2:
+                System.out.println(
+                                "  +---+\n" +
+                                "  |   |\n" +
+                                "  O   |\n" +
+                                " /|\\  |\n" +
+                                "      |\n" +
+                                "      |\n" +
+                                "========="
+                );
+                break;
+            case 1:
+                System.out.println(
+                                "  +---+\n" +
+                                "  |   |\n" +
+                                "  O   |\n" +
+                                " /|\\  |\n" +
+                                " /    |\n" +
+                                "      |\n" +
+                                "========="
+                );
+                break;
+            case 0:
+                System.out.println(
+                                "  +---+\n" +
+                                "  |   |\n" +
+                                "  O   |\n" +
+                                " /|\\  |\n" +
+                                " / \\  |\n" +
+                                "      |\n" +
+                                "========="
+                );
+                break;
+            default:
+        }
         System.out.println("---------------------------------------------------\n");
     }
 
@@ -60,7 +174,8 @@ public class ResultsDisplay {
     }
 
     public void displayGameOver() {
-        System.out.println("\nOh no! You've run out of lives! Better luck next time :(");
+        displayLives(0);
+        System.out.println("\nBetter luck next time :(");
         System.out.println("\nPress 'P' to play again");
         // create some functionality to restart game
     }
