@@ -71,13 +71,10 @@ public class Hangman {
 
         if (!isCorrectGuess) {
             --lives;
+            System.out.println("Sorry! Incorrect guess, try again.");
         }
 
     }
-
-    // check if the guessed letter is in word, if so, say congrats,
-    // put in word and render filled in word
-    // if not in word, say sorry not in word and -1 life
 
     public void playGame() {
         resultsDisplay.displayGameStart();
@@ -90,6 +87,12 @@ public class Hangman {
             Scanner newScannerObject = new Scanner(System.in);
             char guessedLetter = userInteraction.getUserGuess(newScannerObject);
             handleGuess(guessedLetter);
+        }
+        if (lives == 0) {
+            resultsDisplay.displayGameOver();
+        }
+        if (isWordGuessed()){
+            resultsDisplay.displayWin(wordToGuessUnderscore);
         }
     }
 

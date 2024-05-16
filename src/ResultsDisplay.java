@@ -21,7 +21,6 @@ public class ResultsDisplay {
 
     // get the randomised word and display it
     public void displayWord(char[] wordToGuessUnderscore){
-        System.out.println("\n");
         System.out.println(wordToGuessUnderscore);
         System.out.println("\n");
     }
@@ -42,5 +41,19 @@ public class ResultsDisplay {
     public void displayLives(int lives) {
         System.out.println("You have " + lives + " lives left.");
         System.out.println("---------------------------------------------------\n");
+    }
+
+    public void displayWin(char[] wordToGuessUnderscore){
+        System.out.println("\n");
+        System.out.println(wordToGuessUnderscore);
+        System.out.println("\nCongratulations, you successfully guessed the word!");
+        System.out.println("\nPress 'P' to play again");
+        // create some functionality to restart game
+    }
+
+    public void displayGameOver(){
+        System.out.println("\nOh no! You've run out of lives! Better luck next time :(");
+        System.out.println("\nPress 'P' to play again");
+        // create some functionality to restart game
     }
 }
