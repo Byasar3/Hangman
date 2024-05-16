@@ -4,7 +4,17 @@ import java.util.Scanner;
 public class ResultsDisplay {
 
     public void displayRules() {
-        System.out.println("\n                 WELCOME TO TERMINAL HANGMAN!\n");
+        System.out.println(
+                " _                                             \n" +
+                        "| |                                            \n" +
+                        "| |__   __ _ _ __   __ _ _ __ ___   __ _ _ __  \n" +
+                        "| '_ \\ / _` | '_ \\ / _` | '_ ` _ \\ / _` | '_ \\ \n" +
+                        "| | | | (_| | | | | (_| | | | | | | (_| | | | |\n" +
+                        "|_| |_|\\__,_|_| |_|\\__, |_| |_| |_|\\__,_|_| |_|\n" +
+                        "                    __/ |                      \n" +
+                        "                   |___/                       "
+        );
+        System.out.println("\nWELCOME TO TERMINAL HANGMAN!\n");
         System.out.println("   RULES:\n");
         System.out.println("1. You can only guess one letter at a time, not a word.");
         System.out.println("2. Each wrong letter guess is one life lost.");
