@@ -1,4 +1,3 @@
-import java.util.Arrays;
 import java.util.Scanner;
 // class for connecting the other classes together and running the game
 public class Hangman {
@@ -9,8 +8,9 @@ public class Hangman {
     protected char[] wordToGuessUnderscore;
     protected int lives;
     protected char[] lettersGuessed;
-    protected char guessedLetter;
     protected ResultsDisplay resultsDisplay;
+    protected UserInteraction userInteraction;
+
 
     // constructor
     public Hangman() {
@@ -19,9 +19,11 @@ public class Hangman {
         this.lives = 10; // hard coded number of lives
         this.wordToGuessUnderscore = turnWordIntoUnderscores(wordToGuess);
         this.resultsDisplay = new ResultsDisplay();
+        this.userInteraction =  new UserInteraction();
     }
 
     // methods
+
     public char[] turnWordIntoUnderscores(String wordToGuess) {
         // Create a StringBuilder to build the underscores with spaces
         StringBuilder underscoredWord = new StringBuilder();
@@ -35,17 +37,16 @@ public class Hangman {
     public void playGame() {
             resultsDisplay.displayGameStart();
             resultsDisplay.displayWord(wordToGuessUnderscore);
-            handleGuess();
             resultsDisplay.displayLives(lives);
-
+            Scanner newScannerObject = new Scanner(System.in);
+            char guessedLetter = userInteraction.getUserGuess(newScannerObject);
+            handleGuess(guessedLetter);
     }
 
-    public void handleGuess() {
-        Scanner newScannerObject = new Scanner(System.in);
-        System.out.println("Guess a letter! ");
+    public void handleGuess(char guessedLetter) {
+        System.out.println("this be here: " + guessedLetter);
         // check if letter already been guessed
         //
-
     }
 
 
