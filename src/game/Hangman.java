@@ -1,4 +1,4 @@
-package gameLogic;
+package game;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -84,13 +84,13 @@ public class Hangman {
 
     public void playGame() {
         resultsDisplay.displayGameStart();
+        Scanner newScannerObject = new Scanner(System.in);
         while (lives > 0 && !isWordGuessed()) {
             resultsDisplay.displayWord(wordToGuessUnderscore);
             if (!lettersGuessed.isEmpty()) {
                 resultsDisplay.displayListOfGuessedLetters(lettersGuessed);
             }
             resultsDisplay.displayLives(lives);
-            Scanner newScannerObject = new Scanner(System.in);
             char guessedLetter = userInteraction.getUserGuess(newScannerObject);
             handleGuess(guessedLetter);
         }
