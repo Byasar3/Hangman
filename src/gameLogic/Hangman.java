@@ -1,5 +1,11 @@
+package gameLogic;
+
 import java.util.ArrayList;
 import java.util.Scanner;
+import ui.ResultsDisplay;
+import ui.UserInteraction;
+import utils.Word;
+
 
 // class for connecting the other classes together and running the game
 public class Hangman {
@@ -94,11 +100,5 @@ public class Hangman {
         if (isWordGuessed()) {
             resultsDisplay.displayWin(wordToGuessUnderscore);
         }
-    }
-
-    public static void main(String[] args) {
-        // create an instance of hangman and run playGame() on it
-        Hangman game = new Hangman();
-        game.playGame();
     }
 }
