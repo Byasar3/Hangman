@@ -167,18 +167,13 @@ public class ResultsDisplay {
         System.out.println("---------------------------------------------------\n");
     }
 
-    public void displayWin(char[] wordToGuessUnderscore) {
-        System.out.println("\n");
-        System.out.println(wordToGuessUnderscore);
-        System.out.println("\nCongratulations, you successfully guessed the word!");
-        System.out.println("\nPress 'P' to play again");
-        // create some functionality to restart game
+    public void displayEndOfGame(boolean isWordGuessed) {
+        if (isWordGuessed) {
+            System.out.println("\nCongratulations, you successfully guessed the word!");
+        } else {
+            displayLives(0);
+            System.out.println("\nBetter luck next time :(");
+        }
     }
 
-    public void displayGameOver() {
-        displayLives(0);
-        System.out.println("\nBetter luck next time :(");
-        System.out.println("\nPress 'P' to play again");
-        // create some functionality to restart game
-    }
 }

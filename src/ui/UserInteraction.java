@@ -29,4 +29,9 @@ public class UserInteraction {
         }
         return Character.toLowerCase(firstChar);
     }
+
+    public char getRestartChoice(Scanner newScannerObject) {
+        System.out.println("\nEnter 'P' to play again or 'Q' to quit game");
+        return newScannerObject.nextLine().charAt(0);
+    }
 }

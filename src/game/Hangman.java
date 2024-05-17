@@ -13,13 +13,12 @@ public class Hangman {
     private static final int INITIAL_LIVES = 10;
 
     // variables
-    private final String wordToGuess;
-    private final char[] wordToGuessUnderscore;
+    private String wordToGuess;
+    private char[] wordToGuessUnderscore;
     private int lives;
     private final ArrayList<Character> lettersGuessed;
     private final ResultsDisplay resultsDisplay;
     private final UserInteraction userInteraction;
-
 
     // constructor
     public Hangman() {
@@ -82,23 +81,45 @@ public class Hangman {
         }
     }
 
-    public void playGame() {
-        resultsDisplay.displayGameStart();
-        Scanner newScannerObject = new Scanner(System.in);
-        while (lives > 0 && !isWordGuessed()) {
-            resultsDisplay.displayWord(wordToGuessUnderscore);
-            if (!lettersGuessed.isEmpty()) {
-                resultsDisplay.displayListOfGuessedLetters(lettersGuessed);
-            }
-            resultsDisplay.displayLives(lives);
-            char guessedLetter = userInteraction.getUserGuess(newScannerObject);
-            handleGuess(guessedLetter);
-        }
-        if (lives == 0) {
-            resultsDisplay.displayGameOver();
-        }
-        if (isWordGuessed()) {
-            resultsDisplay.displayWin(wordToGuessUnderscore);
-        }
+    public void restartGame() {
+        this.lives = INITIAL_LIVES;
+        this.lettersGuessed.clear();
+        this.wordToGuess = Word.getRandomWord();
+        this.wordToGuessUnderscore = turnWordIntoUnderscores(this.wordToGuess);
     }
+
+
+    public void playGame() {
+        Scanner newScannerObject = new Scanner(System.in);
+
+        while (true) {
+            resultsDisplay.displayGameStart();
+
+            while (lives > 0 && !isWordGuessed()) {
+                resultsDisplay.displayWord(wordToGuessUnderscore);
+                if (!lettersGuessed.isEmpty()) {
+                    resultsDisplay.displayListOfGuessedLetters(lettersGuessed);
+                }
+                resultsDisplay.displayLives(lives);
+                char guessedLetter = userInteraction.getUserGuess(newScannerObject);
+                handleGuess(guessedLetter);
+            }
+
+            if (lives == 0 || isWordGuessed()) {
+                resultsDisplay.displayEndOfGame(isWordGuessed());
+                char restartChoice = userInteraction.getRestartChoice(newScannerObject);
+                if (restartChoice == 'p' || restartChoice == 'P') {
+                    restartGame();
+                } else if ((restartChoice == 'q' || restartChoice == 'Q')) {
+                    System.out.println("Exiting the game. Goodbye!");
+                    break;
+                } else {
+                    System.out.println("Please enter a valid letter.");
+
+                }
+            }
+        }
+        newScannerObject.close();
+    }
+
 }
