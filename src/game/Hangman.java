@@ -9,22 +9,22 @@ import utils.Word;
 
 // class for connecting the other classes together and running the game
 public class Hangman {
+    // constants
+    private static final int INITIAL_LIVES = 10;
 
-    // states
-    protected Word word;
-    protected String wordToGuess;
-    protected char[] wordToGuessUnderscore;
-    protected int lives;
-    protected ArrayList<Character> lettersGuessed;
-    protected ResultsDisplay resultsDisplay;
-    protected UserInteraction userInteraction;
+    // variables
+    private final String wordToGuess;
+    private final char[] wordToGuessUnderscore;
+    private int lives;
+    private final ArrayList<Character> lettersGuessed;
+    private final ResultsDisplay resultsDisplay;
+    private final UserInteraction userInteraction;
 
 
     // constructor
     public Hangman() {
-        this.word = new Word();
-        this.wordToGuess = word.getRandomWord();
-        this.lives = 10; // hard coded number of lives
+        this.wordToGuess = Word.getRandomWord();
+        this.lives = INITIAL_LIVES; // hard coded number of lives
         this.lettersGuessed = new ArrayList<>();
         this.wordToGuessUnderscore = turnWordIntoUnderscores(wordToGuess);
         this.resultsDisplay = new ResultsDisplay();
@@ -32,7 +32,7 @@ public class Hangman {
     }
 
     // methods
-    public char[] turnWordIntoUnderscores(String wordToGuess) {
+    private char[] turnWordIntoUnderscores(String wordToGuess) {
         // repeat "_ " as many times as the length of wordToGuess
         // trim any white space before or after
         // convert to character array

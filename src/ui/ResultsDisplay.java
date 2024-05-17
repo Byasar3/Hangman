@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class ResultsDisplay {
+    private static final Scanner SCANNER = new Scanner(System.in);
 
     public void displayRules() {
         System.out.println(
@@ -24,10 +25,9 @@ public class ResultsDisplay {
     }
 
     public void displayGameStart() {
-        Scanner newScannerObject = new Scanner(System.in);
         displayRules();
         System.out.println("Press the enter key to start the game!");
-        newScannerObject.nextLine();
+        SCANNER.nextLine();
     }
 
     // get the randomised word and display it
