@@ -3,7 +3,24 @@ package ui;
 import java.util.Scanner;
 
 public class UserInteraction {
-    // class responsible for interacting with user - getting inputs and prints message
+
+    public String getDifficultySelection(Scanner newScannerObject){
+        int chosenDifficulty = newScannerObject.nextInt();
+        while (true) {
+            switch (chosenDifficulty){
+                case 1:
+                    return "easy";
+                case 2:
+                    return "medium";
+                case 3:
+                    return "difficult";
+                default:
+                    System.out.println("Invalid choice. Please pick either 1, 2 or 3.");
+                    chosenDifficulty = newScannerObject.nextInt();
+            }
+        }
+    }
+
     public char getUserGuess(Scanner newScannerObject) {
         // initialize to null character
         char firstChar = '\0';

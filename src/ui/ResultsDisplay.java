@@ -24,6 +24,14 @@ public class ResultsDisplay {
         System.out.println("3. The game will end when you're out of lives or the word is guessed.\n");
     }
 
+    public void displayDifficultySelection() {
+        System.out.println("Choose difficulty level:");
+        System.out.println("1. Easy");
+        System.out.println("2. Medium");
+        System.out.println("3. Difficult");
+        System.out.print("Enter your choice (1, 2, or 3): ");
+    }
+
     public void displayGameStart() {
         displayRules();
         System.out.println("Press the enter key to start the game!");

@@ -13,25 +13,24 @@ public class Hangman {
     private static final int INITIAL_LIVES = 10;
 
     // variables
-    private String wordToGuess;
-    private char[] wordToGuessUnderscore;
+    protected String wordToGuess;
+    protected char[] wordToGuessUnderscore;
     private int lives;
-    private final ArrayList<Character> lettersGuessed;
-    private final ResultsDisplay resultsDisplay;
-    private final UserInteraction userInteraction;
+    private ArrayList<Character> lettersGuessed;
+    private ResultsDisplay resultsDisplay;
+    private UserInteraction userInteraction;
 
     // constructor
     public Hangman() {
-        this.wordToGuess = Word.getRandomWord();
-        this.lives = INITIAL_LIVES; // hard coded number of lives
+        this.lives = INITIAL_LIVES;
         this.lettersGuessed = new ArrayList<>();
-        this.wordToGuessUnderscore = turnWordIntoUnderscores(wordToGuess);
         this.resultsDisplay = new ResultsDisplay();
         this.userInteraction = new UserInteraction();
     }
 
+
     // methods
-    private char[] turnWordIntoUnderscores(String wordToGuess) {
+    protected char[] turnWordIntoUnderscores(String wordToGuess) {
         // repeat "_ " as many times as the length of wordToGuess
         // trim any white space before or after
         // convert to character array
@@ -81,10 +80,10 @@ public class Hangman {
         }
     }
 
-    public void restartGame() {
+    public void restartGame(String difficulty) {
         this.lives = INITIAL_LIVES;
         this.lettersGuessed.clear();
-        this.wordToGuess = Word.getRandomWord();
+        this.wordToGuess = Word.getRandomWord(difficulty);
         this.wordToGuessUnderscore = turnWordIntoUnderscores(this.wordToGuess);
     }
 
@@ -94,22 +93,41 @@ public class Hangman {
 
         while (true) {
             resultsDisplay.displayGameStart();
+            resultsDisplay.displayDifficultySelection();
+            String difficulty = userInteraction.getDifficultySelection(newScannerObject);
 
-            while (lives > 0 && !isWordGuessed()) {
-                resultsDisplay.displayWord(wordToGuessUnderscore);
-                if (!lettersGuessed.isEmpty()) {
-                    resultsDisplay.displayListOfGuessedLetters(lettersGuessed);
-                }
-                resultsDisplay.displayLives(lives);
-                char guessedLetter = userInteraction.getUserGuess(newScannerObject);
-                handleGuess(guessedLetter);
+            // Instantiate the appropriate subclass based on the difficulty chosen
+            Hangman game;
+            switch (difficulty.toLowerCase()) {
+                case "easy":
+                    game = new Easy(difficulty);
+                    break;
+                case "medium":
+                    game = new Medium(difficulty);
+                    break;
+                case "difficult":
+                    game = new Difficult(difficulty);
+                    break;
+                default:
+                    System.out.println("Invalid difficulty level. Please pick either Easy, Medium, or Difficult.");
+                    continue;
             }
 
-            if (lives == 0 || isWordGuessed()) {
-                resultsDisplay.displayEndOfGame(isWordGuessed());
+            while (game.lives > 0 && !game.isWordGuessed()) {
+                resultsDisplay.displayWord(game.wordToGuessUnderscore);
+                if (!game.lettersGuessed.isEmpty()) {
+                    resultsDisplay.displayListOfGuessedLetters(game.lettersGuessed);
+                }
+                resultsDisplay.displayLives(game.lives);
+                char guessedLetter = userInteraction.getUserGuess(newScannerObject);
+                game.handleGuess(guessedLetter);
+            }
+
+            if (game.lives == 0 || game.isWordGuessed()) {
+                resultsDisplay.displayEndOfGame(game.isWordGuessed());
                 char restartChoice = userInteraction.getRestartChoice(newScannerObject);
                 if (restartChoice == 'p' || restartChoice == 'P') {
-                    restartGame();
+                    game.restartGame(difficulty);
                 } else if ((restartChoice == 'q' || restartChoice == 'Q')) {
                     System.out.println("Exiting the game. Goodbye!");
                     break;
@@ -121,5 +139,4 @@ public class Hangman {
         }
         newScannerObject.close();
     }
-
 }
