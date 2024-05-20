@@ -16,7 +16,6 @@ public class UserInteraction {
                     return "difficult";
                 default:
                     System.out.println("Invalid choice. Please pick either 1, 2 or 3.");
-                    chosenDifficulty = newScannerObject.nextInt();
             }
         }
     }

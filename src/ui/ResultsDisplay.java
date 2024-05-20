@@ -29,7 +29,7 @@ public class ResultsDisplay {
         System.out.println("1. Easy");
         System.out.println("2. Medium");
         System.out.println("3. Difficult");
-        System.out.print("Enter your choice (1, 2, or 3): ");
+        System.out.print("Enter your choice (1, 2, or 3): \n");
     }
 
     public void displayGameStart() {
@@ -40,6 +40,7 @@ public class ResultsDisplay {
 
     // get the randomised word and display it
     public void displayWord(char[] wordToGuessUnderscore) {
+        System.out.println("\n");
         System.out.println(wordToGuessUnderscore);
         System.out.println("\n");
     }
@@ -58,121 +59,121 @@ public class ResultsDisplay {
     // display lives left/hanging man
     public void displayLives(int lives) {
         System.out.println("You have " + lives + " lives left.");
-        switch (lives){
+        switch (lives) {
             case 9:
                 System.out.println(
-                                "       \n" +
-                                "       \n" +
-                                "       \n" +
-                                "       \n" +
-                                "       \n" +
-                                "       \n" +
-                                "========="
+                        "            \n" +
+                                "            \n" +
+                                "            \n" +
+                                "            \n" +
+                                "            \n" +
+                                "            \n" +
+                                "     ========="
                 );
                 break;
             case 8:
                 System.out.println(
-                                "      +\n" +
-                                "      |\n" +
-                                "      |\n" +
-                                "      |\n" +
-                                "      |\n" +
-                                "      |\n" +
-                                "========="
+                        "           +\n" +
+                                "           |\n" +
+                                "           |\n" +
+                                "           |\n" +
+                                "           |\n" +
+                                "           |\n" +
+                                "     ========="
                 );
                 break;
 
             case 7:
                 System.out.println(
-                                "  +---+\n" +
-                                "      |\n" +
-                                "      |\n" +
-                                "      |\n" +
-                                "      |\n" +
-                                "      |\n" +
-                                "========="
+                        "       +---+\n" +
+                                "           |\n" +
+                                "           |\n" +
+                                "           |\n" +
+                                "           |\n" +
+                                "           |\n" +
+                                "     ========="
                 );
                 break;
             case 6:
                 System.out.println(
-                                "  +---+\n" +
-                                "  |   |\n" +
-                                "      |\n" +
-                                "      |\n" +
-                                "      |\n" +
-                                "      |\n" +
-                                "========="
+                        "       +---+\n" +
+                                "       |   |\n" +
+                                "           |\n" +
+                                "           |\n" +
+                                "           |\n" +
+                                "           |\n" +
+                                "     ========="
                 );
                 break;
             case 5:
                 System.out.println(
-                                "  +---+\n" +
-                                "  |   |\n" +
-                                "  O   |\n" +
-                                "      |\n" +
-                                "      |\n" +
-                                "      |\n" +
-                                "========="
+                        "       +---+\n" +
+                                "       |   |\n" +
+                                "       O   |\n" +
+                                "           |\n" +
+                                "           |\n" +
+                                "           |\n" +
+                                "     ========="
                 );
                 break;
             case 4:
                 System.out.println(
-                                "  +---+\n" +
-                                "  |   |\n" +
-                                "  O   |\n" +
-                                "  |   |\n" +
-                                "      |\n" +
-                                "      |\n" +
-                                "========="
+                        "       +---+\n" +
+                                "       |   |\n" +
+                                "       O   |\n" +
+                                "       |   |\n" +
+                                "           |\n" +
+                                "           |\n" +
+                                "     ========="
                 );
                 break;
             case 3:
                 System.out.println(
-                                "  +---+\n" +
-                                "  |   |\n" +
-                                "  O   |\n" +
-                                " /|   |\n" +
-                                "      |\n" +
-                                "      |\n" +
-                                "========="
+                        "       +---+\n" +
+                                "       |   |\n" +
+                                "       O   |\n" +
+                                "      /|   |\n" +
+                                "           |\n" +
+                                "           |\n" +
+                                "     ========="
                 );
                 break;
             case 2:
                 System.out.println(
-                                "  +---+\n" +
-                                "  |   |\n" +
-                                "  O   |\n" +
-                                " /|\\  |\n" +
-                                "      |\n" +
-                                "      |\n" +
-                                "========="
+                        "       +---+\n" +
+                                "       |   |\n" +
+                                "       O   |\n" +
+                                "      /|\\  |\n" +
+                                "           |\n" +
+                                "           |\n" +
+                                "     ========="
                 );
                 break;
             case 1:
                 System.out.println(
-                                "  +---+\n" +
-                                "  |   |\n" +
-                                "  O   |\n" +
-                                " /|\\  |\n" +
-                                " /    |\n" +
+                        "       +---+\n" +
+                                "       |   |\n" +
+                                "       O   |\n" +
+                                "      /|\\  |\n" +
+                                "      /    |\n" +
                                 "      |\n" +
-                                "========="
+                                "     ========="
                 );
                 break;
             case 0:
                 System.out.println(
-                                "  +---+\n" +
-                                "  |   |\n" +
-                                "  O   |\n" +
-                                " /|\\  |\n" +
-                                " / \\  |\n" +
-                                "      |\n" +
-                                "========="
+                        "       +---+\n" +
+                                "       |   |\n" +
+                                "       O   |\n" +
+                                "      /|\\  |\n" +
+                                "      / \\  |\n" +
+                                "           |\n" +
+                                "     ========="
                 );
                 break;
             default:
         }
-        System.out.println("---------------------------------------------------\n");
+        System.out.println("\n------------------------------------------------------------------\n");
     }
 
     public void displayEndOfGame(boolean isWordGuessed) {

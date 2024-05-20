@@ -89,12 +89,13 @@ public class Hangman {
 
 
     public void playGame() {
-        Scanner newScannerObject = new Scanner(System.in);
+
 
         while (true) {
             resultsDisplay.displayGameStart();
             resultsDisplay.displayDifficultySelection();
-            String difficulty = userInteraction.getDifficultySelection(newScannerObject);
+            Scanner difficultySelection = new Scanner(System.in);
+            String difficulty = userInteraction.getDifficultySelection(difficultySelection);
 
             // Instantiate the appropriate subclass based on the difficulty chosen
             Hangman game;
@@ -119,13 +120,15 @@ public class Hangman {
                     resultsDisplay.displayListOfGuessedLetters(game.lettersGuessed);
                 }
                 resultsDisplay.displayLives(game.lives);
-                char guessedLetter = userInteraction.getUserGuess(newScannerObject);
+                Scanner userCharInput = new Scanner(System.in);
+                char guessedLetter = userInteraction.getUserGuess(userCharInput);
                 game.handleGuess(guessedLetter);
             }
 
             if (game.lives == 0 || game.isWordGuessed()) {
                 resultsDisplay.displayEndOfGame(game.isWordGuessed());
-                char restartChoice = userInteraction.getRestartChoice(newScannerObject);
+                Scanner userEndGameChoice = new Scanner(System.in);
+                char restartChoice = userInteraction.getRestartChoice(userEndGameChoice);
                 if (restartChoice == 'p' || restartChoice == 'P') {
                     game.restartGame(difficulty);
                 } else if ((restartChoice == 'q' || restartChoice == 'Q')) {
@@ -137,6 +140,5 @@ public class Hangman {
                 }
             }
         }
-        newScannerObject.close();
     }
 }
