@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import ui.ResultsDisplay;
 import ui.UserInteraction;
-import utils.Word;
+import utils.WordUtils;
 
 
 // class for connecting the other classes together and running the game
@@ -83,7 +83,7 @@ public class Hangman {
     public void restartGame(String difficulty) {
         this.lives = INITIAL_LIVES;
         this.lettersGuessed.clear();
-        this.wordToGuess = Word.getRandomWord(difficulty);
+        this.wordToGuess = WordUtils.getRandomWord(difficulty);
         this.wordToGuessUnderscore = turnWordIntoUnderscores(this.wordToGuess);
     }
 

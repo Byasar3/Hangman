@@ -1,11 +1,11 @@
 package game;
 
-import utils.Word;
+import utils.WordUtils;
 
 public class Easy extends Hangman{
 
     public Easy (String difficulty){
-        this.wordToGuess = Word.getRandomWord(difficulty);
+        this.wordToGuess = WordUtils.getRandomWord(difficulty);
         this.wordToGuessUnderscore = turnWordIntoUnderscores(wordToGuess);
     }
 }
