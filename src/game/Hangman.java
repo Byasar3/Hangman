@@ -10,13 +10,13 @@ import utils.WordUtils;
 // class for connecting the other classes together and running the game
 public class Hangman {
     // constants
-    private static final int INITIAL_LIVES = 10;
+    protected static final int INITIAL_LIVES = 10;
 
     // variables
     protected String wordToGuess;
     protected char[] wordToGuessUnderscore;
-    private int lives;
-    private ArrayList<Character> lettersGuessed;
+    protected int lives;
+    protected ArrayList<Character> lettersGuessed;
     private ResultsDisplay resultsDisplay;
     private UserInteraction userInteraction;
 
