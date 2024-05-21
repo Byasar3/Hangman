@@ -3,11 +3,13 @@ package ui;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import static utils.AnsiColourUtils.*;
+
 public class ResultsDisplay {
     private static final Scanner SCANNER = new Scanner(System.in);
 
     public void displayRules() {
-        System.out.println(
+        System.out.println(colourise(
                 " _                                             \n" +
                         "| |                                            \n" +
                         "| |__   __ _ _ __   __ _ _ __ ___   __ _ _ __  \n" +
@@ -16,20 +18,12 @@ public class ResultsDisplay {
                         "|_| |_|\\__,_|_| |_|\\__, |_| |_| |_|\\__,_|_| |_|\n" +
                         "                    __/ |                      \n" +
                         "                   |___/                       "
-        );
-        System.out.println("\nWELCOME TO TERMINAL HANGMAN!\n");
-        System.out.println("   RULES:\n");
-        System.out.println("1. You can only guess one letter at a time, not a word.");
-        System.out.println("2. Each wrong letter guess is one life lost.");
-        System.out.println("3. The game will end when you're out of lives or the word is guessed.\n");
-    }
-
-    public void displayDifficultySelection() {
-        System.out.println("Choose difficulty level:");
-        System.out.println("1. Easy");
-        System.out.println("2. Medium");
-        System.out.println("3. Difficult");
-        System.out.print("Enter your choice (1, 2, or 3): \n");
+        , CYAN));
+        System.out.println(colourise("\nWELCOME TO TERMINAL HANGMAN!\n", PURPLE));
+        System.out.println(colourise("   RULES:\n", BLUE));
+        System.out.println(colourise("1. You can only guess one letter at a time, not a word.", BLUE));
+        System.out.println(colourise("2. Each wrong letter guess is one life lost.", BLUE));
+        System.out.println(colourise("3. The game will end when you're out of lives or the word is guessed.\n", BLUE));
     }
 
     public void displayGameStart() {
@@ -37,6 +31,16 @@ public class ResultsDisplay {
         System.out.println("Press the enter key to start the game!");
         SCANNER.nextLine();
     }
+
+    public void displayDifficultySelection() {
+        System.out.println("Choose difficulty level:");
+        System.out.println(colourise("1. Easy", GREEN));
+        System.out.println(colourise("2. Medium", YELLOW));
+        System.out.println(colourise("3. Difficult", RED));
+        System.out.print("Enter your choice (1, 2, or 3): \n");
+    }
+
+
 
     // get the randomised word and display it
     public void displayWord(char[] wordToGuessUnderscore) {
@@ -53,12 +57,19 @@ public class ResultsDisplay {
                 guessedLettersAsString.append(", ");
             }
         }
-        System.out.println("You've guessed these letters so far : " + guessedLettersAsString + "\n");
+        System.out.println(colourise("You've guessed these letters so far : " + guessedLettersAsString + "\n", CYAN));
     }
 
     // display lives left/hanging man
     public void displayLives(int lives) {
-        System.out.println("You have " + lives + " lives left.");
+        if (lives <= 10 && lives >= 7) {
+            System.out.println(colourise("You have " + lives + " lives left.", GREEN));
+        } else if (lives <= 6 && lives >= 4) {
+            System.out.println(colourise("You have " + lives + " lives left.", YELLOW));
+        } else {
+            System.out.println(colourise("You have " + lives + " lives left.", RED));
+
+        }
         switch (lives) {
             case 9:
                 System.out.println(
@@ -178,10 +189,10 @@ public class ResultsDisplay {
 
     public void displayEndOfGame(boolean isWordGuessed) {
         if (isWordGuessed) {
-            System.out.println("\nCongratulations, you successfully guessed the word!");
+            System.out.println(colourise("\nCongratulations, you successfully guessed the word!", GREEN));
         } else {
             displayLives(0);
-            System.out.println("\nBetter luck next time :(");
+            System.out.println(colourise("\nBetter luck next time :(", RED));
         }
     }
 

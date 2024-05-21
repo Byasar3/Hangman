@@ -6,6 +6,8 @@ import ui.ResultsDisplay;
 import ui.UserInteraction;
 import utils.WordUtils;
 
+import static utils.AnsiColourUtils.*;
+
 
 // class for connecting the other classes together and running the game
 public class Hangman {
@@ -73,9 +75,9 @@ public class Hangman {
         if (!isCorrectGuess) {
             --lives;
             if (lives > 0) {
-                System.out.println("Sorry! Incorrect guess, try again.");
+                System.out.println(colourise("Sorry! Incorrect guess, try again.", RED));
             } else {
-                System.out.println("You used your final life...");
+                System.out.println(colourise("You used your final life...", RED));
             }
         }
     }
@@ -110,7 +112,7 @@ public class Hangman {
                     game = new Difficult(difficulty);
                     break;
                 default:
-                    System.out.println("Invalid difficulty level. Please pick either Easy, Medium, or Difficult.");
+                    System.out.println(colourise("Invalid difficulty level. Please pick either Easy, Medium, or Difficult.", RED));
                     continue;
             }
 
@@ -132,10 +134,10 @@ public class Hangman {
                 if (restartChoice == 'p' || restartChoice == 'P') {
                     game.restartGame(difficulty);
                 } else if ((restartChoice == 'q' || restartChoice == 'Q')) {
-                    System.out.println("Exiting the game. Goodbye!");
+                    System.out.println(colourise("Exiting the game. Goodbye!", PURPLE));
                     break;
                 } else {
-                    System.out.println("Please enter a valid letter.");
+                    System.out.println(colourise("Please enter a valid letter.", RED));
 
                 }
             }

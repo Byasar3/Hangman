@@ -2,6 +2,8 @@ package ui;
 
 import java.util.Scanner;
 
+import static utils.AnsiColourUtils.*;
+
 public class UserInteraction {
 
     public String getDifficultySelection(Scanner newScannerObject){
@@ -15,7 +17,7 @@ public class UserInteraction {
                 case 3:
                     return "difficult";
                 default:
-                    System.out.println("Invalid choice. Please pick either 1, 2 or 3.");
+                    System.out.println(colourise("Invalid choice. Please pick either 1, 2 or 3.", RED));
             }
         }
     }
@@ -35,19 +37,19 @@ public class UserInteraction {
                     System.out.println("\nYou guessed letter: " + firstChar);
                     isValidInput = true;
                 } else {
-                    System.out.println("\nInvalid input. Please enter a letter");
+                    System.out.println(colourise("\nInvalid input. Please enter a letter", RED));
                     // reset firstChar to null
                     firstChar = '\0';
                 }
             } else {
-                System.out.println("\nNo character entered.");
+                System.out.println(colourise("\nNo character entered.", RED));
             }
         }
         return Character.toLowerCase(firstChar);
     }
 
     public char getRestartChoice(Scanner newScannerObject) {
-        System.out.println("\nEnter 'P' to play again or 'Q' to quit game");
+        System.out.println(colourise("\nEnter 'P' to play again or 'Q' to quit game", BLUE));
         return newScannerObject.nextLine().charAt(0);
     }
 }
