@@ -20,10 +20,6 @@ To run the Hangman game, ensure you have Java installed on your system. This gam
     ```sh
     git clone https://github.com/Byasar3/Hangman.git
     ```
-2. **Navigate to the game directory**:
-    ```sh
-    cd Hangman
-    ```
 
 ## Usage
 
