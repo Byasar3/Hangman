@@ -10,7 +10,6 @@ public class AnsiColourUtils {
     public static final String PURPLE = "\033[0;35m";
     public static final String CYAN = "\033[0;36m";
 
-
     // Method to colourise text
     public static String colourise(String text, String color) {
         return color + text + RESET;

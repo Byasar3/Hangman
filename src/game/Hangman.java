@@ -5,12 +5,10 @@ import java.util.Scanner;
 import ui.ResultsDisplay;
 import ui.UserInteraction;
 import utils.WordUtils;
-
 import static utils.AnsiColourUtils.*;
 
-
-// class for connecting the other classes together and running the game
 public class Hangman {
+
     // constants
     protected static final int INITIAL_LIVES = 10;
 
@@ -29,7 +27,6 @@ public class Hangman {
         this.resultsDisplay = new ResultsDisplay();
         this.userInteraction = new UserInteraction();
     }
-
 
     // methods
     protected char[] turnWordIntoUnderscores(String wordToGuess) {
@@ -89,10 +86,7 @@ public class Hangman {
         this.wordToGuessUnderscore = turnWordIntoUnderscores(this.wordToGuess);
     }
 
-
     public void playGame() {
-
-
         while (true) {
             resultsDisplay.displayGameStart();
             resultsDisplay.displayDifficultySelection();
@@ -128,7 +122,7 @@ public class Hangman {
             }
 
             if (game.lives == 0 || game.isWordGuessed()) {
-                resultsDisplay.displayEndOfGame(game.isWordGuessed());
+                resultsDisplay.displayEndOfGame(game.isWordGuessed(), game.wordToGuess);
                 Scanner userEndGameChoice = new Scanner(System.in);
                 char restartChoice = userInteraction.getRestartChoice(userEndGameChoice);
                 if (restartChoice == 'p' || restartChoice == 'P') {

@@ -6,10 +6,10 @@ import static utils.AnsiColourUtils.*;
 
 public class UserInteraction {
 
-    public String getDifficultySelection(Scanner newScannerObject){
+    public String getDifficultySelection(Scanner newScannerObject) {
         int chosenDifficulty = newScannerObject.nextInt();
         while (true) {
-            switch (chosenDifficulty){
+            switch (chosenDifficulty) {
                 case 1:
                     return "easy";
                 case 2:
@@ -23,7 +23,6 @@ public class UserInteraction {
     }
 
     public char getUserGuess(Scanner newScannerObject) {
-        // initialize to null character
         char firstChar = '\0';
         boolean isValidInput = false;
 

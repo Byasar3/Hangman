@@ -18,7 +18,7 @@ public class ResultsDisplay {
                         "|_| |_|\\__,_|_| |_|\\__, |_| |_| |_|\\__,_|_| |_|\n" +
                         "                    __/ |                      \n" +
                         "                   |___/                       "
-        , CYAN));
+                , CYAN));
         System.out.println(colourise("\nWELCOME TO TERMINAL HANGMAN!\n", PURPLE));
         System.out.println(colourise("   RULES:\n", BLUE));
         System.out.println(colourise("1. You can only guess one letter at a time, not a word.", BLUE));
@@ -40,9 +40,6 @@ public class ResultsDisplay {
         System.out.print("Enter your choice (1, 2, or 3): \n");
     }
 
-
-
-    // get the randomised word and display it
     public void displayWord(char[] wordToGuessUnderscore) {
         System.out.println("\n");
         System.out.println(wordToGuessUnderscore);
@@ -60,7 +57,6 @@ public class ResultsDisplay {
         System.out.println(colourise("You've guessed these letters so far : " + guessedLettersAsString + "\n", CYAN));
     }
 
-    // display lives left/hanging man
     public void displayLives(int lives) {
         if (lives <= 10 && lives >= 7) {
             System.out.println(colourise("You have " + lives + " lives left.", GREEN));
@@ -167,7 +163,7 @@ public class ResultsDisplay {
                                 "       O   |\n" +
                                 "      /|\\  |\n" +
                                 "      /    |\n" +
-                                "      |\n" +
+                                "           |\n" +
                                 "     ========="
                 );
                 break;
@@ -187,12 +183,12 @@ public class ResultsDisplay {
         System.out.println("\n------------------------------------------------------------------\n");
     }
 
-    public void displayEndOfGame(boolean isWordGuessed) {
+    public void displayEndOfGame(boolean isWordGuessed, String wordToGuess) {
         if (isWordGuessed) {
-            System.out.println(colourise("\nCongratulations, you successfully guessed the word!", GREEN));
+            System.out.println(colourise("\nCongratulations! you successfully guessed the word: " + wordToGuess, GREEN));
         } else {
             displayLives(0);
-            System.out.println(colourise("\nBetter luck next time :(", RED));
+            System.out.println(colourise("\nThe word was: " + wordToGuess + "\nBetter luck next time :(", RED));
         }
     }
 
